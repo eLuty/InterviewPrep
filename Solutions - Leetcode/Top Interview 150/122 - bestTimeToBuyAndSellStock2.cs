@@ -10,19 +10,27 @@ public class Solution {
     // Sliding window approach.
     public int MaxProfit(int[] prices) {
         int maxProfit = 0;
-        int l = 0;
-        int r = 1;
+        int l = 0; // left pointer
+        int r = 1; // right pointer
 
         while(r < prices.Length){
+            // check if the left element is smaller than the right
             if(prices[l] < prices[r]){
+
+                // left is smaller than the right; calc profit and add it to the max
                 int profit = prices[r] - prices[l];
                 maxProfit += profit;
 
+                // move the left pointer to the right position
                 l = r;
             }
             else{
+
+                // left is larger than the right, move left pointer to the right
                 l = r;
             }
+
+            // increment the right pointer
             r++;
         }
 
